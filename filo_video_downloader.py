@@ -18,16 +18,20 @@ def carregar_pasta_videos():
     else:
         return ""
 
-def baixar_video(url, caminho_salvar):
+def baixar_video(url, caminho_salvar, resolution):
     try:
         # Criar um objeto YouTube com a URL do vídeo
         yt = YouTube(url)
         
         # Baixar o vídeo na melhor qualidade disponível
-        video = yt.streams.get_highest_resolution()
+        video = yt.streams.filter(res=resolution, progressive=True).first()
+
+        # Concatenar o texto adicional ao nome do arquivo
+        nome_arquivo = video.default_filename.replace(".mp4", f" - {resolution}.mp4")
+        
         
         # Fazer o download do vídeo para o caminho especificado
-        video.download(output_path=caminho_salvar)
+        video.download(output_path=caminho_salvar, filename=nome_arquivo)
         print("Download concluído!")
     except Exception as e:
         print("Ocorreu um erro:", str(e))
@@ -72,7 +76,7 @@ def baixar_video_callback():
     loading_label.pack(padx=20, pady=10)
 
     # Inicia uma nova thread para executar o download do vídeo
-    download_thread = threading.Thread(target=baixar_video, args=(url, pasta_videos))
+    download_thread = threading.Thread(target=baixar_video, args=(url, pasta_videos, opcao_selecionada.get()))
     download_thread.start()
 
     # Monitora o término do download e fecha a janela de carregamento
@@ -85,6 +89,7 @@ def check_download_finished(download_thread, loading_window):
     else:
         # Se o download estiver concluído, fecha a janela de carregamento
         loading_window.destroy()
+        
 
 
 # Cria a janela principal
@@ -111,6 +116,10 @@ root.deiconify()
 
 pasta_videos_salva = carregar_pasta_videos()
 
+opcoes = ["360p", "720p"]
+opcao_selecionada = tk.StringVar(root)
+opcao_selecionada.set(opcoes[1])
+
 frame = ttk.Frame(root, padding="20")
 frame.grid(row=0, column=0, padx=10, pady=10)
 
@@ -130,6 +139,9 @@ pasta_videos_entry.insert(0, pasta_videos_salva)
 
 selecionar_pasta_button = ttk.Button(root, text="Selecionar Pasta", command=selecionar_pasta)
 selecionar_pasta_button.grid(row=1, column=2, padx=10, pady=5)
+
+dropdown = ttk.OptionMenu(root, opcao_selecionada, opcoes[1], *opcoes)
+dropdown.grid(row=2, column=0, padx=10, pady=5)
 
 baixar_video_button = ttk.Button(root, text="Baixar Vídeo", command=baixar_video_callback, state=tk.DISABLED)
 baixar_video_button.grid(row=2, column=1, padx=10, pady=5)
