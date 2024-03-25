@@ -1,5 +1,5 @@
 # Filó Video Downloader
-*Filó é o nome do meu gato <3*
+*Filó é o nome do meu gato <3*\
 Apenas um simples **baixador** de vídeos do youtube, sem anúncios, pop-ups ou assinatura, ***só baixar e ser feliz***!
 Tem uma interface simples e funciona ~~na maioria das vezes~~, aproveite
 
