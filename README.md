@@ -1,4 +1,4 @@
-# Filó Video & Audio Downloader
+# Filó Video, Audio & Playlist Downloader
 *Filó é o nome do meu gato <3*\
 Apenas um simples **baixador** de vídeos, aúdios e playlists do youtube, sem anúncios, pop-ups ou assinaturas, ***só baixar e ser feliz***!
 Tem uma interface simples e funciona ~~na maioria das vezes~~, aproveite
