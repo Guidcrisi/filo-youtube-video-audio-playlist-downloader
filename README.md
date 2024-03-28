@@ -17,7 +17,7 @@ Caso queira facilitar o uso da aplicação você pode criar um atalho com um arq
 Depois vai em **Salvar como**, no campo de **Tipo selecione Todos os arquivos**, no campo de nome coloque o nome que preferir **porém terminando com .bat, não vai funcionar se não tiver isso!**\
 *Exemplo: Filo Video Downloader.bat*
 
-![Filozin](filo-2.jpeg)
+<img src="filo-2.jpeg" alt="Filozin" width="200"/>
 
 **Pronto!**
 *Aproveite o Filó Video Downloader!*
