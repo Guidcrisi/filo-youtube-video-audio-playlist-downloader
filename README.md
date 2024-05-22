@@ -23,6 +23,6 @@ Depois vai em **Salvar como**, no campo de **Tipo selecione Todos os arquivos**,
 *Aproveite o Filó Video Downloader!*
 
 ## Dependências
-**Python 3.12** \
+**Python 3.11** \
 **Pytube** - https://pypi.org/project/pytube/7.0.16/
 
